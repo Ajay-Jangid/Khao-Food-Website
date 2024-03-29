@@ -14,8 +14,9 @@ export const useRestaurantMenu = (resId) => {
     }, []);
 
     const fetchMenu = async () => {
-        const url = isMobile ? MOBILE_MENU_URL : MENU_URL;
-        const data = await fetch(url+resId)
+        // const url = "http://localhost:3000/data/getRestaurantMenu/";
+        // const url = isMobile ? MOBILE_MENU_URL : MENU_URL;
+        const data = await fetch(MENU_URL+resId)
         const json = await data.json()
         console.log(json)
         setResInfo(json.data)

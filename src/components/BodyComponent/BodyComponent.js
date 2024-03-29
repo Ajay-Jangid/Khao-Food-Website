@@ -2,7 +2,7 @@ import RestaurantCard, { withHeaderLabel } from "../RestaurantCard/RestaurantCar
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import "./BodyComponent.css"
-import { MOBILE_RESTAURANT_LIST_URL, RESTAURANT_LIST_URL, isMobile } from "../../utils/constants";
+import { RESTAURANT_LIST_URL } from "../../utils/constants";
 import { FaSearch } from "react-icons/fa";
 import Shimmer from "../Shimmer/Shimmer";
 
@@ -20,10 +20,13 @@ const BodyComponent = () => {
 
   const fetchData = async () => {
     try {
-      const url = isMobile ? MOBILE_RESTAURANT_LIST_URL : RESTAURANT_LIST_URL
+      // const url = isMobile ? MOBILE_RESTAURANT_LIST_URL : RESTAURANT_LIST_URL
+      const url = RESTAURANT_LIST_URL
       const data = await fetch(url)
       const json = await data.json()
-      let restaurants = isMobile ? json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants : json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      // let restaurants = isMobile ? json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants : json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      let restaurants = json;
+      console.log(restaurants)
       restaurants = restaurants.slice(0, restaurants.length - restaurants.length % 4)
       setListOfRestaurants(restaurants)
       setfilteredRestaurant(restaurants)

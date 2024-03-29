@@ -23,7 +23,8 @@ const RestaurantMenu = () => {
     const { lastMileTravelString, slaString } = sla ? sla : {}
     const { message, totalFee } = feeDetails ? feeDetails : {}
     // const itemsCards = isMobile ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
-    let categories = isMobile ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+    // let categories = isMobile ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+    let categories =  resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
     
     
     // let obj = {}
