@@ -2,7 +2,7 @@
 import "./RecommendedCard.css"
 import { CON_URL, NON_VEG_LOGO_URL, VEG_LOGO_URL } from "../../utils/constants";
 
-export default RecommendedCard = ({ description, isVeg, name, defaultPrice, imageId, price }) => {
+const RecommendedCard = ({ description, isVeg, name, defaultPrice, imageId, price }) => {
 
     return (
         <div className="recommended-container">
@@ -18,3 +18,5 @@ export default RecommendedCard = ({ description, isVeg, name, defaultPrice, imag
         </div>
     )
 }
+
+export default RecommendedCard;

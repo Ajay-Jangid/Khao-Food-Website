@@ -1,5 +1,5 @@
 
-export default Contact = () => {
+const Contact = () => {
     return (
         <div>
             <h1>Contact Us</h1>
@@ -7,3 +7,5 @@ export default Contact = () => {
         </div>
     )
 }
+
+export default Contact;

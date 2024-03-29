@@ -1,7 +1,7 @@
 
 import "./RestaurantMenuShimmer.css";
 
-export default RestaurantMenuShimmer = () => {
+const RestaurantMenuShimmer = () => {
     return <div className="shimmer-container">
         <div className="res-menu-shimmer">
             <div className="res-menu-shimmer-left">
@@ -20,3 +20,5 @@ export default RestaurantMenuShimmer = () => {
         </div>
     </div>
 }
+
+export default RestaurantMenuShimmer;

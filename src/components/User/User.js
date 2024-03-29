@@ -1,5 +1,5 @@
 import "./User.css"
-export default User = () => {
+const User = () => {
     return (
         <div className="user-card">
             <h2>Name: Ajay</h2>
@@ -8,3 +8,5 @@ export default User = () => {
         </div>
     )
 }
+
+export default User;

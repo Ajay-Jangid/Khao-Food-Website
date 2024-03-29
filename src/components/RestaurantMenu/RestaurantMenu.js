@@ -1,14 +1,14 @@
 import { useState } from "react";
 import "./RestaurantMenu.css"
-import RestaurantMenuShimmer from "../RestaurantMenuShimmer/RestaurantMenuShimmer";
 import { useParams } from "react-router-dom";
 import RecommendedCard from "../RecommendedCard/RecommendedCard";
 import { useRestaurantMenu } from "../../utils/useRestaurantMenu";
 import { PURE_VEG_LOGO_URL, isMobile } from "../../utils/constants";
 import RestaurantCategory from "../RestaurantCategory/RestaurantCategory";
 import UserContext from "../../utils/UserContext";
+import RestaurantMenuShimmer from "../RestaurantMenuShimmer/RestaurantMenuShimmer";
 
-export default RestaurantMenu = () => {
+const RestaurantMenu = () => {
 
     const [isVegChecked, setIsVegChecked] = useState(false)
     const { resId } = useParams()
@@ -114,3 +114,5 @@ export default RestaurantMenu = () => {
             </div>
     );
 }
+
+export default RestaurantMenu;
