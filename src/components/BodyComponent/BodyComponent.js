@@ -1,10 +1,10 @@
 import RestaurantCard, { withHeaderLabel } from "../RestaurantCard/RestaurantCard";
 import { useState, useEffect } from "react";
-import Shimmer from "../Shimmer/Shimmer";
 import { Link } from "react-router-dom";
 // import "./BodyComponent.css"
 import { MOBILE_RESTAURANT_LIST_URL, RESTAURANT_LIST_URL, isMobile } from "../../utils/constants";
 import { FaSearch } from "react-icons/fa";
+import Shimmer from "../Shimmer/Shimmer";
 
 const BodyComponent = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);

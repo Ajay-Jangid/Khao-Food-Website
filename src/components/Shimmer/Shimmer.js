@@ -1,6 +1,6 @@
 import "./Shimmer.css"
 
-export default Shimmer = () => {
+const Shimmer = () => {
 
     return <div className="shimmer-container w-full">
         <div className="shimmer-card"></div>
@@ -13,3 +13,5 @@ export default Shimmer = () => {
         <div className="shimmer-card"></div>
     </div>
 }
+
+export default Shimmer;
