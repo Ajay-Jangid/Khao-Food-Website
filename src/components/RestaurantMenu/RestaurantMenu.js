@@ -12,13 +12,14 @@ const RestaurantMenu = () => {
 
     const [isVegChecked, setIsVegChecked] = useState(false)
     const { resId } = useParams()
-    const [showIndex, setShowIndex] = useState(null)
+    const [showIndex, setShowIndex] = useState(0)
 
     const resInfo = useRestaurantMenu(resId)  //custom Hook to fetch data
 
     const handleToggle = () => {
         setIsVegChecked(!isVegChecked)
     }
+
     const { name, cuisines, costForTwo, costForTwoMessage, feeDetails, locality, sla, totalRatingsString, avgRatingString } = resInfo ? resInfo?.cards[2]?.card?.card?.info : {}
     const { lastMileTravelString, slaString } = sla ? sla : {}
     const { message, totalFee } = feeDetails ? feeDetails : {}
@@ -26,15 +27,6 @@ const RestaurantMenu = () => {
     // let categories = isMobile ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
     let categories =  resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
     
-    
-    // let obj = {}
-    // for (let item in itemsCards) {
-    //     if (itemsCards[item]?.card?.card?.title?.toString().toLowerCase() === "recommended") {
-    //         obj = itemsCards[item]?.card?.card
-    //     }
-    // }
-
-    // const { itemCards, title } = obj ? obj : {}
     return (
         resInfo === null ? <RestaurantMenuShimmer /> :
             <div className="container w-6/12 mobile:w-full tablet:w-full">
@@ -80,30 +72,6 @@ const RestaurantMenu = () => {
 
                 </div>
 
-                {/* <div className="recommended">
-                    <h3>{`${title}(${itemCards.length})`}</h3>
-                    {
-                        isVegChecked ? <ul>{
-                            itemCards.map((item) => {
-                                const { description, isVeg, name, id, defaultPrice, price, imageId } = item?.card?.info ? item?.card?.info : {}
-                                if (isVeg)
-                                    return <li key={id}>
-                                        <RecommendedCard description={description} isVeg={isVeg} name={name} defaultPrice={defaultPrice} imageId={imageId} price={price} />
-                                    </li>
-                            })
-                        }
-                        </ul> :
-                            <ul>{
-                                itemCards.map((item) => {
-                                    const { description, isVeg, name, id, defaultPrice, price, imageId } = item?.card?.info ? item?.card?.info : {}
-                                    return <li key={id}>
-                                        <RecommendedCard description={description} isVeg={isVeg} name={name} defaultPrice={defaultPrice} imageId={imageId} price={price} />
-                                    </li>
-                                })
-                            }
-                            </ul>
-                    }
-                </div> */}
                 {
                     categories.map((category, index) =>
                         <UserContext.Provider key={index} value={{ lastMileTravelString, totalFee, resId }}>

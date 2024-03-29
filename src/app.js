@@ -2,12 +2,13 @@ import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header/Header";
 import BodyComponent from "./components/BodyComponent/BodyComponent";
-import {BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Error from "./components/Error/Error";
 import RestaurantMenu from "./components/RestaurantMenu/RestaurantMenu";
 import Cart from "./components/Cart/Cart";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Footer from "./components/Footer";
 
 //https://mui.com/material-ui/getting-started/templates/dashboard/
 
@@ -18,7 +19,7 @@ const AppLayout = () => {
   return (
     <Provider store={appStore}>
       <Router>
-        <div className="app w-[100%] h-[100%] mobile:mb-[10rem] tablet:mb-[20rem]">
+        <div className="app w-[100%] h-[100%]">
           <Header />
           <Routes>
             <Route exact path="/" element={<BodyComponent />} />
@@ -27,6 +28,7 @@ const AppLayout = () => {
             <Route path="/restaurants/:resId" element={<RestaurantMenu />} />
             <Route element={<Error />} />
           </Routes>
+          <Footer />
         </div>
       </Router>
     </Provider>

@@ -1,9 +1,9 @@
-import { WEBSITE_NAME } from "../../utils/constants";
+import { SLOGAN, WEBSITE_NAME } from "../../utils/constants";
 
 const About = () => {
     return (
         <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">Welcome to {WEBSITE_NAME}!</h1>
+            <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">Welcome to {WEBSITE_NAME} ... {SLOGAN}</h1>
             <section className="mb-8">
                 <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold mb-2">About Us</h2>
                 <p className="text-lg lg:text-xl xl:text-2xl text-gray-700 mb-4">
@@ -26,6 +26,7 @@ const About = () => {
                     <li>Variety: With a diverse menu featuring dishes from around the world, you'll never run out of options to satisfy your cravings.</li>
                     <li>Quality: We partner with top-rated restaurants and chefs to ensure that every dish is made with high-quality ingredients and prepared with attention to detail.</li>
                     <li>Affordability: We offer competitive prices and regular promotions to make dining at home affordable for everyone.</li>
+                    <li>Taste, Speed, Satisfaction: Experience the perfect blend of flavor, efficiency, and customer happiness.</li>
                 </ul>
             </section>
             <section className="mb-8">
