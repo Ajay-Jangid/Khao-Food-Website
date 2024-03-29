@@ -1,0 +1,32 @@
+{
+  "name": "using-js",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "test": "jest",
+    "start:dev": "parcel index.html",
+    "start:prod": "parcel build index.html"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "https-browserify": "^1.0.0",
+    "parcel": "^2.12.0",
+    "postcss": "^8.4.36",
+    "process": "^0.11.10",
+    "stream-http": "^3.2.0",
+    "tailwindcss": "^3.4.1",
+    "url": "^0.11.3"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^2.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^6.22.3"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}

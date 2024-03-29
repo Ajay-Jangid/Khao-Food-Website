@@ -1,0 +1,219 @@
+.container {
+    margin: 2rem auto;
+    /* width: 800px; */
+    font-size: 1.6rem;
+    padding: 1rem;
+}
+
+.res-details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+
+
+
+.res-right {
+    border: 1px solid #e9e9eb;
+    box-shadow: 0 1px 5px #f9f9f9;
+    border-radius: 6px;
+    text-align: center;
+    padding: 8px;
+    max-width: 100px;
+    height: 85px;
+}
+
+
+.res-left p {
+    font-size: 1.6rem;
+    color: #7e808c;
+    text-overflow: ellipsis;
+    margin-bottom: 10px;
+}
+
+.res-left .res-name-heading {
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: #282c3f;
+    margin-bottom: 8px;
+    text-transform: capitalize;
+}
+
+.total-rating {
+    font-size: 1.1rem;
+    color: #8b8d97;
+    font-weight: 600;
+}
+
+.avg-rating {
+    margin-top: 4px;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #e9e9eb;
+    color: #3d9b6d;
+    font-weight: 600;
+}
+
+
+.distance img {
+    margin-right: 8px;
+    height: 18px;
+    width: 18px;
+}
+
+.distance {
+    display: flex;
+    align-items: center;
+}
+
+.time-price {
+    color: #3e4152;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 2rem 0;
+    border-bottom: .5px solid #d3d3d3;
+    border-top: 1px dashed #8b8d97;
+}
+
+.time-price ul {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.time-price ul li {
+    display: inline-block;
+    margin-right: 2rem;
+}
+
+.circle {
+    margin-right: 5px;
+}
+
+.recommended {
+    margin-top: 2rem;
+    /* padding: 1rem; */
+}
+
+.recommended ul {
+    list-style: none;
+}
+
+.vegOnly {
+    padding: 20px 0;
+    display: flex;
+    font-weight: 500;
+    color: #535665;
+    align-items: center;
+}
+
+.pureVeg {
+    height: 30px;
+    width: 30px;
+    margin-right: 5px;
+}
+
+/* ############## Veg Toggle Button ############### */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 49px;
+    height: 23px;
+    margin-left: 10px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: rgb(0, 128, 0);
+    ;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px rgb(0, 128, 0);
+    ;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+@media screen and (min-width: 200px) and (max-width: 480px) {
+
+    .res-left{
+        width: 70%;
+    }
+
+    .res-right{
+        width: 30%;
+    }
+
+    .total-rating {
+        font-size: 1rem;
+        color: #8b8d97;
+        font-weight: 600;
+    }
+    
+    .avg-rating {
+        margin-top: 2px;
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #e9e9eb;
+        color: #3d9b6d;
+        font-weight: 600;
+    }
+
+    .res-left p {
+        font-size: 1.3rem;
+    }
+
+    .distance span{
+        font-size: 1rem;
+    }
+
+    .time-price {
+        color: #3e4152;
+        font-size: 12px;
+        font-weight: 700;
+        padding: 1rem 0;
+        border-bottom: .5px solid #d3d3d3;
+        border-top: 1px dashed #8b8d97;
+    }
+    
+    .time-price ul {
+        list-style: none;
+        margin-top: 0px;
+    }
+}

@@ -1,0 +1,192 @@
+.res-card {
+    width: 22rem;
+    height: 30rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem auto;
+    padding: 1rem;
+    justify-content: space-between;
+    transition: transform 0.5s ease;
+    border-radius: 10px;
+}
+
+.card-container {
+    width: 100%;
+    height: 50%;
+}
+
+.res-card-image {
+    /* z-index: 4; */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.res-card:hover,
+.res-card:focus {
+    cursor: pointer;
+    transform: translateY(-10px);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+
+.res-card-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin-top: 1rem;
+}
+
+.res-card p {
+    font-weight: 500;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.res-card p span {
+    margin-right: 2rem;
+}
+
+.fa-star {
+    margin-right: 1rem;
+    color: #3d9b6d;
+}
+
+.discount {
+    position: relative;
+    transition: transform ease;
+}
+
+.discountLabel {
+    position: absolute;
+    z-index: 99;
+    top: 38%;
+    left: 15;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: -0.5px;
+    color: black;
+    background-color: #FBBF24;
+    /* padding: 0 5px; */
+}
+
+/* Media queries for responsiveness */
+
+/* For Mobile Devices – 320px — 480px */
+@media screen and (min-width: 200px) and (max-width: 480px) {
+    .res-card {
+        flex-direction: row;
+        width: 100%;
+        height: 13rem;
+        padding: 0.5rem;
+        margin: 2px auto;
+        /* border: 2px solid black; */
+    }
+
+    .card-container {
+        width: 30%;
+        height: 80%;
+        /* border: 2px solid black; */
+    }
+
+    .card-info {
+        width: 66%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        /* border: 2px solid black; */
+    }
+
+    .res-card-title {
+        font-size: 1.6rem;
+        font-weight: 700;
+        /* margin-top: 1rem; */
+    }
+
+    .res-card p {
+        font-weight: 500;
+        font-size: 1.2rem;
+        margin-bottom: 2px;
+    }
+
+    .res-card p span {
+        margin-right: 1rem;
+    }
+
+    .fa-star {
+        margin-right: 1rem;
+        color: #3d9b6d;
+    }
+
+    .card-info .costForTwo {
+        font-size: 1.3rem;
+        font-weight: 700;
+    }
+
+    .discountLabel {
+        position: absolute;
+        z-index: 99;
+        top: 70%;
+        left: 4;
+        font-weight: 600;
+        font-size: 10px;
+        line-height: 22px;
+        letter-spacing: -0.5px;
+        color: black;
+        background-color: #FBBF24;
+        /* padding: 0 5px; */
+        width: 30%;
+        text-align: center;
+        border-radius: 3px;
+    }
+}
+
+/* For iPads and Tablets – 481px — 768px */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .res-card {
+        /* flex-direction: row;
+        width: 100%;
+        height: 13rem;
+        padding: 0.5rem; */
+        /* margin: 2px auto; */
+        margin: 2px 13px  ;
+        border: 2px solid black;
+    }
+    
+    .discountLabel {
+        position: absolute;
+        z-index: 99;
+        top: 40%;
+        left: 15;
+        font-weight: 600;
+        font-size: 16px;
+        padding: 0 5px;
+    }
+}
+
+/* For Laptops and small screens – 769px — 1024px */
+@media screen and (min-width: 769px) and (max-width: 1024px) {}
+
+/* For Large screens and Desktops – 1025px — 1200px */
+@media screen and (min-width: 1025px) and (max-width: 1200px) {}
+
+/* For TV and Extra Large Screens – 1201px and more */
+@media screen and (min-width: 1201px) {}
+
+@media (orientation:landscape) and (max-height:500px) and (min-width: 680px) and (max-width: 768px) {
+    .res-card {
+        /* flex-direction: row;
+        width: 100%;
+        height: 13rem;
+        padding: 0.5rem; */
+        /* margin: 2px auto; */
+        /* margin: 2px 13px  ; */
+        margin: 2px 2px;
+        border: 2px solid red;
+    }
+}

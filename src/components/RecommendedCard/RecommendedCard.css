@@ -1,0 +1,57 @@
+.vegNonVeg {
+    height: 2rem;
+    width: 2rem;
+}
+
+.recommended-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    border-bottom: 0.5px solid #d3d3d3;
+}
+
+
+
+.recommended-image {
+    height: 11rem;
+    width: 13rem;
+    border-radius: 10px;
+    margin-top: 10px;
+    object-fit: cover;
+    object-position: center;
+    background-repeat: no-repeat;
+}
+
+.recommended-title {
+    margin-right: 4px;
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #3e4152;
+    word-break: break-word;
+    margin-top: 10px;
+}
+
+.recommended-price {
+    font-weight: 300;
+    color: #282c3f;
+    margin-top: 10px;
+}
+
+.recommended-description {
+    margin-top: 14px;
+    color: rgba(40, 44, 63, .45);
+    width: 85%;
+    font-size: 1.3rem;
+}
+
+.recommended-price .fa-indian-rupee-sign{
+    margin-right: 5px;
+}
+
+
+.recommended-price{
+    font-weight: 600;
+}
+

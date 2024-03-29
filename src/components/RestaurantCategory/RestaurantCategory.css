@@ -1,0 +1,7 @@
+.icon-down:before {
+    content: "\25BC";
+}
+
+.icon-up:before {
+    content: "\25B2";
+}

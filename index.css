@@ -1,0 +1,29 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  /*Smooth scroll behaviour on scrolling */
+  font-family: ProximaNova, arial, Helvetica Neue, sans-serif;
+}
+
+/* .app {
+  margin: 1rem;
+} */
+
+/* #################### HEADER STYLING ############################ */
+
+
+/* ######################## HEADER STYLING END ############################ */
