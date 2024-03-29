@@ -1,7 +1,7 @@
 import { LOGO_URL } from "../../utils/constants";
 import { Link } from 'react-router-dom';
 import "./Header.css"
-import useOnlineStatus from "../../utils/useOnlineStatus";
+// import useOnlineStatus from "../../utils/useOnlineStatus";
 import { useSelector } from "react-redux";
 import { GiShoppingCart } from "react-icons/gi";
 

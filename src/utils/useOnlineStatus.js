@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
-export default useOnlineStatus = () => {
+// export default useOnlineStatus = () => {
 
-    const [onlineStatus, setOnlineStatus] = useState(true)
-    console.log('Online Status Called:', onlineStatus)
-    useEffect(() => {
-        window.addEventListener("offline", () => {
-            setOnlineStatus(false)
-        })
-        window.addEventListener("online", () => {
-            setOnlineStatus(true)
-        })
-    }, [])
+//     const [onlineStatus, setOnlineStatus] = useState(true)
+//     console.log('Online Status Called:', onlineStatus)
+//     useEffect(() => {
+//         window.addEventListener("offline", () => {
+//             setOnlineStatus(false)
+//         })
+//         window.addEventListener("online", () => {
+//             setOnlineStatus(true)
+//         })
+//     }, [])
 
-    return onlineStatus;
-}
+//     return onlineStatus;
+// }
