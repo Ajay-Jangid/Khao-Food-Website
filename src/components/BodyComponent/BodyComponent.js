@@ -2,20 +2,49 @@ import RestaurantCard, { withHeaderLabel } from "../RestaurantCard/RestaurantCar
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import "./BodyComponent.css"
-import { RESTAURANT_LIST_URL } from "../../utils/constants";
+import { FETCH_MORE_RESTAURANT_LIST_URL, RESTAURANT_LIST_URL } from "../../utils/constants";
 import { FaSearch } from "react-icons/fa";
 import Shimmer from "../Shimmer/Shimmer";
+import Loading from "../Loading/Loading";
 
 const BodyComponent = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [topRatedRes, settopRatedRes] = useState(false);
   const [searchText, setSearchText] = useState('');
   const [filteredRestaurant, setfilteredRestaurant] = useState([])
+  const [pageOffSet, setPageOffset] = useState(null);
+  const [page, setPage] = useState(0);
+  const [loading, setLoading] = useState(false);
 
   const DiscountLabel = withHeaderLabel(RestaurantCard);
 
   useEffect(() => {
     fetchData();
+  }, []);
+
+  useEffect(() => {
+    if (page > 0) {
+      fetchMoreData();
+    }
+  }, [page]);
+
+  const handleInfiniteScroll = async () => {
+    try {
+      if (
+        window.innerHeight + document.documentElement.scrollTop + 1 >=
+        document.documentElement.scrollHeight - document.getElementById('footer').clientHeight * 2
+      ) {
+        setLoading(true);
+        setPage((prev) => prev + 1);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleInfiniteScroll);
+    return () => window.removeEventListener("scroll", handleInfiniteScroll);
   }, []);
 
   const fetchData = async () => {
@@ -25,11 +54,35 @@ const BodyComponent = () => {
       const data = await fetch(url)
       const json = await data.json()
       // let restaurants = isMobile ? json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants : json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-      let restaurants = json;
+      let restaurants = json.restaurants;
       console.log(restaurants)
       restaurants = restaurants.slice(0, restaurants.length - restaurants.length % 4)
       setListOfRestaurants(restaurants)
       setfilteredRestaurant(restaurants)
+      console.log('OFFSET', json.pageOffSet)
+      setPageOffset(json.pageOffSet)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const fetchMoreData = async () => {
+    try {
+      const data = await fetch(FETCH_MORE_RESTAURANT_LIST_URL, {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(pageOffSet)
+      })
+      const json = await data.json()
+      let restaurants = json.restaurants;
+      restaurants = restaurants.slice(0, restaurants.length - restaurants.length % 4)
+      setListOfRestaurants([...listOfRestaurants, ...restaurants])
+      setfilteredRestaurant([...listOfRestaurants, ...restaurants])
+      setPageOffset(json.pageOffSet)
+      setLoading(false);
+
     } catch (err) {
       console.log(err)
     }
@@ -51,7 +104,7 @@ const BodyComponent = () => {
       });
 
       setfilteredRestaurant(
-        tmp.sort((a, b) => a.info.avgRating - b.info.avgRating)
+        tmp.sort((a, b) => b.info.avgRating - a.info.avgRating)
       );
       settopRatedRes(true);
     } else {
@@ -65,7 +118,7 @@ const BodyComponent = () => {
       displaySearchRes()
     }
   }
-
+  // return <Shimmer />
 
   // if (!onlineStatus) {
   //   return <h1>Looks like you're offline!! Please check your internet connection</h1>
@@ -127,7 +180,7 @@ const BodyComponent = () => {
           <button className="text-lg px-4 py-2 rounded-lg bg-black text-white" onClick={() => displaySearchRes()}>Search</button> */}
         <button className="text-lg px-4 py-2 rounded-lg bg-black text-white mobile:w-[50%] mobile:mt-2 mobile:text-center" onClick={() => topRatedRestaurant()}>Top Rated Restaurant</button>
       </div>
-      <div className="mx-auto flex flex-wrap mobile:w-full mobile:flex-col">
+      <div className="mx-auto w-full flex flex-wrap mobile:w-full mobile:flex-col">
         {
           listOfRestaurants.length > 0 ?
             filteredRestaurant.map((restaurantObj) => (

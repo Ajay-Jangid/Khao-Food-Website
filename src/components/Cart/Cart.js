@@ -3,6 +3,8 @@ import { clearCart, removeItem, updateItem } from "../../utils/cartSlice";
 import { EMPTY_CART_LOGO, PAYMENT_SUCCESSFULL_LOGO } from "../../utils/constants";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"
 
 const Cart = () => {
     const [orderPlaced, setOrderPlaced] = useState(false);
@@ -21,25 +23,33 @@ const Cart = () => {
 
     const dispatch = useDispatch()
     const cartItems = useSelector((store) => store.cart.items)
-    const totalPrice = useSelector((store) => store.cart.totalPrice)
+    const totalPrice = useSelector((store) => store.cart.totalPrice).toFixed(2)
     const deliveryCharges = useSelector((store) => store.cart.deliveryCharges)
     const restaurantPackingCharges = 5;
     const gstCharges = (Math.round((totalPrice * 0.05 + restaurantPackingCharges * 100)) / 100).toFixed(2);
     let totalToPay = +totalPrice + +gstCharges + +deliveryCharges;
     const roundedTotal = Math.floor(+totalToPay) + 1;
     const platformCharges = (roundedTotal - totalToPay).toFixed(2);
-    totalToPay = +totalToPay + +platformCharges;
+    totalToPay = (+totalToPay + +platformCharges).toFixed(0);
 
     const handleClearCart = () => {
         dispatch(clearCart())
     }
 
-    const handleRemoveItem = (itemId) => {
-        dispatch(removeItem(itemId))
+    const handleRemoveItem = (item) => {
+        toast.warning(`${item.item.name} removed from cart!`, {
+            position: "bottom-center",
+            style: { fontSize: "16px" }
+        })
+        dispatch(removeItem(item.item.id))
     }
 
-    const handleUpdateItem = (itemId) => {
-        dispatch(updateItem(itemId))
+    const handleUpdateItem = (item) => {
+        toast.success(`${item.item.name} added to cart!`, {
+            position: "bottom-center",
+            style: { fontSize: "16px" }
+        })
+        dispatch(updateItem(item.item.id))
     }
 
     const handleProceedToPay = () => {
@@ -67,13 +77,13 @@ const Cart = () => {
                                     <img className="h-5 w-5 my-2 mobile:w-4 mobile:h-4" src={item.item.vegNonVegUrl} alt="Item" />
                                     <h3 className="font-bold my-2 text-2xl  w-[90%] mobile:text-lg mobile:w-[80%]">{item.item.name}</h3>
                                 </div>
-                                <div className="w-[10%] mobile:w-[25%] ">
-                                    <h3 className="font-extralight text-2xl mobile:text-xl w-full"><i className="fa-solid fa-indian-rupee-sign mr-2" />{item.item.price * item.quantity}</h3>
+                                <div className="w-[20%] mobile:w-[25%] ">
+                                    <h3 className="font-extralight text-2xl mobile:text-xl w-full"><i className="fa-solid fa-indian-rupee-sign mr-2" />{(+item.item.price * +item.quantity).toFixed(2)}</h3>
                                 </div>
                                 <div className="w-[15%] mobile:w-[20%] p-2 border border-green-400 flex items-center justify-between mobile:p-1">
-                                    <button className="font-bold w-8 h-8  text-green-500 text-[14px] " onClick={() => handleRemoveItem(item.item.id)}>−</button>
+                                    <button className="font-bold w-8 h-8  text-green-500 text-[14px] " onClick={() => handleRemoveItem(item)}>−</button>
                                     <span className="inline-block font-bold text-center w-8  text-green-500 text-[14px] ">{item.quantity}</span>
-                                    <button className="font-bold w-8 h-8  text-green-500 text-[14px] " onClick={() => handleUpdateItem(item.item.id)}>+</button>
+                                    <button className="font-bold w-8 h-8  text-green-500 text-[14px] " onClick={() => handleUpdateItem(item)}>+</button>
                                 </div>
                             </div>
                         ))
@@ -118,6 +128,8 @@ const Cart = () => {
                     <h1 className="text-3xl font-extrabold ">Thank you !</h1>
                 </div>
             }
+            <ToastContainer />
+
         </div>
     )
 }

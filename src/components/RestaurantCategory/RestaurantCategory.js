@@ -1,3 +1,4 @@
+import FoodItemList from "../ItemList/ItemList"
 import ItemList from "../ItemList/ItemList"
 import "./RestaurantCategory.css"
 const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
@@ -12,7 +13,7 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
                 {showItems ? <span className='icon-up mobile:text-[12px]'></span> :
                     <span className='icon-down mobile:text-[12px]'></span>}
             </div>
-            {showItems ? <ItemList items={data.itemCards} /> : ""}
+            {showItems ? <FoodItemList items={data.itemCards} /> : ""}
         </div>
     )
 }

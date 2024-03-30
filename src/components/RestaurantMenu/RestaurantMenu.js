@@ -23,10 +23,11 @@ const RestaurantMenu = () => {
     const { name, cuisines, costForTwo, costForTwoMessage, feeDetails, locality, sla, totalRatingsString, avgRatingString } = resInfo ? resInfo?.cards[2]?.card?.card?.info : {}
     const { lastMileTravelString, slaString } = sla ? sla : {}
     const { message, totalFee } = feeDetails ? feeDetails : {}
-    // const itemsCards = isMobile ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards
+    // const itemsCards = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0].card.card.isPureVeg
+    const isPureVeg = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0].card.card.isPureVeg
     // let categories = isMobile ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
-    let categories =  resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
-    
+    let categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+
     return (
         resInfo === null ? <RestaurantMenuShimmer /> :
             <div className="container w-6/12 mobile:w-full tablet:w-full">
@@ -52,9 +53,9 @@ const RestaurantMenu = () => {
                             <li><i className="fa-solid fa-clock circle"></i>{slaString}</li>
                             <li><span className="circle"><i className="fa-solid fa-indian-rupee-sign"></i></span>{+costForTwo / 100} for two</li>
                         </ul>
-                        {/* <div className="vegOnly">
+                        <div className="vegOnly">
                             {
-                                itemsCards[0]?.card?.card?.isPureVeg ?
+                                isPureVeg ?
                                     <>
                                         <img className="pureVeg" src={PURE_VEG_LOGO_URL} />
                                         <h3 className="veg-title">Pure Veg</h3>
@@ -67,14 +68,14 @@ const RestaurantMenu = () => {
                                         </label>
                                     </>
                             }
-                        </div> */}
+                        </div>
                     </div>
 
                 </div>
 
                 {
                     categories.map((category, index) =>
-                        <UserContext.Provider key={index} value={{ lastMileTravelString, totalFee, resId }}>
+                        <UserContext.Provider key={index} value={{ lastMileTravelString, totalFee, resId, isVegChecked }}>
                             <RestaurantCategory data={category.card.card} showItems={index === showIndex && true} setShowIndex={() => setShowIndex((prevIndex) => prevIndex === index ? null : index)} />
                         </UserContext.Provider>
                     )

@@ -25,7 +25,7 @@ export const MENU_URL = "https://khao-backend.vercel.app/data/getRestaurantMenu/
 export const RESTAURANT_LIST_URL = "https://khao-backend.vercel.app/data/getRestaurantsList"
 // export const MOBILE_RESTAURANT_LIST_URL = "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9351929&lng=77.62448069999999"
 
-
+export const FETCH_MORE_RESTAURANT_LIST_URL = "https://khao-backend.vercel.app/data/getUpdatedRestaurantsList";
 export const isMobile = window.matchMedia("(max-width: 800px)").matches;
 export const isTablet = window.matchMedia("(min-width: 481px) and (max-width: 1024px)").matches;
 export const isDesktop = window.matchMedia("(min-width: 1025px)").matches;

@@ -21,8 +21,8 @@ const RestaurantCard = (props) => {
         />
       </div>
       <div className="card-info">
-        <h3 className="res-card-title">{name}</h3>
-        <p>{cuisines.join(", ").slice(0, 27) + ".."}</p>
+        <h3 className="res-card-title">{name.length > 19 ? name.slice(0, 20) + "..." : name}</h3>
+        <p>{cuisines.join(", ").length > 21 ? cuisines.join(", ").slice(0, 22) + "..." : cuisines.join(", ")}</p>
         <p>
           <span>
             <i className="fa fa-star"></i>
@@ -31,7 +31,7 @@ const RestaurantCard = (props) => {
 
           <span>• {slaString}</span>
         </p>
-        <p className="costForTwo">{costForTwo}</p>
+        <p className="costForTwo font-bold">{costForTwo}</p>
       </div>
     </div>
   );
