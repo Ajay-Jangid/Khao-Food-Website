@@ -68,13 +68,8 @@ const BodyComponent = () => {
 
   const fetchMoreData = async () => {
     try {
-      const data = await fetch(FETCH_MORE_RESTAURANT_LIST_URL, {
-        method: "POST",
-        headers: {
-          'Content-Type': "application/json"
-        },
-        body: JSON.stringify(pageOffSet)
-      })
+      let url = FETCH_MORE_RESTAURANT_LIST_URL + "/" + pageOffSet.nextOffset + "/" + pageOffSet.widgetOffset.collectionV5RestaurantListWidget_SimRestoRelevance_food_seo;
+      const data = await fetch(url)
       const json = await data.json()
       let restaurants = json.restaurants;
       restaurants = restaurants.slice(0, restaurants.length - restaurants.length % 4)
