@@ -3,7 +3,8 @@ import { SLOGAN, WEBSITE_NAME } from "../../utils/constants";
 const About = () => {
     return (
         <div className="container mx-auto px-4 py-8">
-            <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">Welcome to {WEBSITE_NAME} ... {SLOGAN}</h1>
+            <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">Welcome to {WEBSITE_NAME}</h1>
+            <h1 className="text-xl lg:text-4xl xl:text-5xl font-bold mb-4">{SLOGAN}</h1>
             <section className="mb-8">
                 <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold mb-2">About Us</h2>
                 <p className="text-lg lg:text-xl xl:text-2xl text-gray-700 mb-4">

@@ -154,9 +154,9 @@ const Item = ({ item }) => {
                                     <button className="py-2 px-4 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[65%] translate-x-[-35%] z-10 mobile:text-[1rem]" onClick={() => handleUpdateItem(item)}>+</button>
                                 </div> :
                                 <div className="w-[20%] border-2 h-[12rem] rounded-[1.5rem] relative mobile:w-[40%] mobile:h-[10rem] tablet:w-[30%]">
-                                    <button className="font-bold w-8 h-8  text-green-500 text-[14px] " onClick={() => handleRemoveItem(item.card.info.id)}>−</button>
-                                    <span className="inline-block font-bold text-center w-8  text-green-500 text-[14px] ">{count}</span>
-                                    <button className="font-bold w-8 h-8  text-green-500 text-[14px] " onClick={() => handleUpdateItem(item.card.info.id)}>+</button>
+                                    <button className="py-2 px-4 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[35%] translate-x-[-70%] z-10 mobile:text-[1rem]" onClick={() => handleRemoveItem(item)}>−</button>
+                                    <span className="py-2 px-3 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[50%] translate-x-[-50%]  mobile:text-[1rem]">{count}</span>
+                                    <button className="py-2 px-4 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[65%] translate-x-[-35%] z-10 mobile:text-[1rem]" onClick={() => handleUpdateItem(item)}>+</button>
                                 </div>
 
                     }
