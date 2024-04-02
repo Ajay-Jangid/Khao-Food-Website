@@ -144,6 +144,13 @@
         text-align: center;
         border-radius: 3px;
     }
+
+    .res-card:hover,
+    .res-card:focus {
+        cursor: pointer;
+        transform: none;
+        box-shadow: none;
+    }
 }
 
 /* For iPads and Tablets – 481px — 768px */
@@ -154,10 +161,10 @@
         height: 13rem;
         padding: 0.5rem; */
         /* margin: 2px auto; */
-        margin: 2px 13px  ;
+        margin: 2px 13px;
         border: 2px solid black;
     }
-    
+
     .discountLabel {
         position: absolute;
         z-index: 99;
