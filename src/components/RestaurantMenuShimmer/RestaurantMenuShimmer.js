@@ -2,7 +2,7 @@
 import "./RestaurantMenuShimmer.css";
 
 const RestaurantMenuShimmer = () => {
-    return <div className="shimmer-container">
+    return <div className="res-shimmer-container">
         <div className="res-menu-shimmer">
             <div className="res-menu-shimmer-left">
                 <div className="shimmer1"></div>

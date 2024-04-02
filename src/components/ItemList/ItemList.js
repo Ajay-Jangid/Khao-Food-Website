@@ -140,23 +140,27 @@ const Item = ({ item }) => {
                             item.card.info.imageId ?
                                 <div className="w-[20%] border-2 h-[12rem] rounded-[1.5rem] relative mobile:w-[40%] mobile:h-[10rem] tablet:w-[30%]">
                                     <img className="w-full h-full object-cover object-center rounded-[1.5rem] " src={CON_URL + item.card.info.imageId} />
-                                    <button className="p-2 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[50%] translate-x-[-50%] mobile:text-[1rem]" onClick={() => handleAddItem(item)}>ADD +</button>
+                                    <button className="p-3 w-36 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-[-15] left-[50%] translate-x-[-50%] mobile:text-[1rem]" onClick={() => handleAddItem(item)}>ADD +</button>
                                 </div> :
                                 <div className="w-[20%] border-2 h-[12rem] rounded-[1.5rem] relative mobile:w-[40%] mobile:h-[10rem] tablet:w-[30%]">
-                                    <button className="p-2 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[50%] translate-x-[-50%] mobile:text-[1rem]" onClick={() => handleAddItem(item)}>ADD +</button>
+                                    <button className="p-3 w-36 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-[-15] left-[50%] translate-x-[-50%] mobile:text-[1rem]" onClick={() => handleAddItem(item)}>ADD +</button>
                                 </div>
                             :
                             item.card.info.imageId ?
                                 <div className="w-[20%] border-2 h-[12rem] rounded-[1.5rem] relative mobile:w-[40%] mobile:h-[10rem] tablet:w-[30%]">
                                     <img className="w-full h-full object-cover object-center rounded-[1.5rem] " src={CON_URL + item.card.info.imageId} />
-                                    <button className="py-2 px-4 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[35%] translate-x-[-70%] z-10 mobile:text-[1rem]" onClick={() => handleRemoveItem(item)}>−</button>
-                                    <span className="py-2 px-3 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[50%] translate-x-[-50%]  mobile:text-[1rem]">{count}</span>
-                                    <button className="py-2 px-4 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[65%] translate-x-[-35%] z-10 mobile:text-[1rem]" onClick={() => handleUpdateItem(item)}>+</button>
+                                    <div className="w-36 h-12 text-center rounded-xl shadow-lg flex justify-between items-center bg-white text-green-500 absolute bottom-[-15] left-[50%] translate-x-[-50%] z-10 mobile:text-[1rem] ">
+                                        <button className="w-[30%] text-center h-full hover:bg-slate-200 hover:rounded-l-lg" onClick={() => handleRemoveItem(item)}>−</button>
+                                        <span className="inline-block w-[30%]">{count}</span>
+                                        <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-r-lg" onClick={() => handleUpdateItem(item)}>+</button>
+                                    </div>
                                 </div> :
                                 <div className="w-[20%] border-2 h-[12rem] rounded-[1.5rem] relative mobile:w-[40%] mobile:h-[10rem] tablet:w-[30%]">
-                                    <button className="py-2 px-4 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[35%] translate-x-[-70%] z-10 mobile:text-[1rem]" onClick={() => handleRemoveItem(item)}>−</button>
-                                    <span className="py-2 px-3 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[50%] translate-x-[-50%]  mobile:text-[1rem]">{count}</span>
-                                    <button className="py-2 px-4 bg-white text-green-500 text-[1.2rem] rounded-xl shadow-lg absolute bottom-0 left-[65%] translate-x-[-35%] z-10 mobile:text-[1rem]" onClick={() => handleUpdateItem(item)}>+</button>
+                                    <div className="w-36 h-14 text-center rounded-xl shadow-lg flex items-center justify-between bg-white text-green-500 absolute bottom-[-15] left-[50%] translate-x-[-50%] z-10 mobile:text-[1rem] ">
+                                        <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-l-lg" onClick={() => handleRemoveItem(item)}>−</button>
+                                        <span className="inline-block w-[30%]">{count}</span>
+                                        <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-r-lg" onClick={() => handleUpdateItem(item)}>+</button>
+                                    </div>
                                 </div>
 
                     }

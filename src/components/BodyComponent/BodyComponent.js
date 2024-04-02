@@ -6,6 +6,7 @@ import { FETCH_MORE_RESTAURANT_LIST_URL, RESTAURANT_LIST_URL } from "../../utils
 import { FaSearch } from "react-icons/fa";
 import Shimmer from "../Shimmer/Shimmer";
 import Loading from "../Loading/Loading";
+import Dishes from "../Dishes";
 
 const BodyComponent = () => {
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -115,44 +116,11 @@ const BodyComponent = () => {
   }
   // return <Shimmer />
 
-  // if (!onlineStatus) {
-  //   return <h1>Looks like you're offline!! Please check your internet connection</h1>
-  // }
   return (
-    // <div className="body-container w-8/12">
-    //   <div className="filter">
 
-    //     <div className="search-btn">
-    //       <input type="text" className="search-box border-2 border-black" value={searchText} onChange={(e) => {
-    //         setSearchText(e.target.value)
-    //       }} onKeyDown={handleKeyDown} />
-    //       <button className="btn px-4 font-semibold rounded-md bg-black text-white" onClick={() => displaySearchRes()}>Search</button>
-    //     </div>
+    <div className="w-8/12 mx-auto mobile:w-full ">
 
-    //     <button
-    //       className="btn px-4 font-semibold rounded-md bg-black text-white"
-    //       onClick={() => {
-    //         topRatedRestaurant()
-    //       }}
-    //     >
-    //       Top Rated Restaurant
-    //     </button>
-
-    //   </div>
-    //   <div className="res-container">
-    //     {
-    //       listOfRestaurants.length > 0 ?
-    //         filteredRestaurant.map((restaurantObj) => (
-    //           <Link className="res-link" key={restaurantObj.info.id} to={"/restaurants/" + restaurantObj.info.id}>
-    //             {/* <RestaurantCard resData={restaurantObj.info} /> */}
-    //             <DiscountLabel resData={restaurantObj.info} />
-    //           </Link>
-    //         )) : <Shimmer />
-    //     }
-    //   </div>
-    // </div>
-    <div className="w-8/12 mx-auto mobile:w-full">
-      <div className=" mx-auto p-4 flex justify-between mobile:flex-col mobile:items-center">
+      <div className="mx-auto p-4 flex justify-between mobile:flex-col mobile:items-center">
 
         <div className="flex">
           <input
@@ -169,12 +137,10 @@ const BodyComponent = () => {
           </button>
 
         </div>
-        {/* <input type="text" className="border-2 border-black text-lg px-4 py-2 rounded-lg mr-8" value={searchText} onChange={(e) => {
-            setSearchText(e.target.value)
-          }} onKeyDown={handleKeyDown} />
-          <button className="text-lg px-4 py-2 rounded-lg bg-black text-white" onClick={() => displaySearchRes()}>Search</button> */}
         <button className="text-lg px-4 py-2 rounded-lg bg-black text-white mobile:w-[50%] mobile:mt-2 mobile:text-center" onClick={() => topRatedRestaurant()}>Top Rated Restaurant</button>
       </div>
+      <Dishes></Dishes>
+
       <div className="mx-auto w-full flex flex-wrap mobile:w-full mobile:flex-col">
         {
           listOfRestaurants.length > 0 ?

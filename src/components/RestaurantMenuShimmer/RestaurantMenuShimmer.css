@@ -1,4 +1,4 @@
-.shimmer-container {
+.res-shimmer-container {
     width: 50%;
     margin: auto;
 }
@@ -106,7 +106,7 @@
 }
 
 @media screen and (min-width: 321px) and (max-width: 480px) {
-    .shimmer-container{
+    .res-shimmer-container{
         width: 80%;
     }
 
