@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CON_URL, FETCH_DISHES_URL } from '../utils/constants';
+import { CON_URL, FETCH_DISHES_URL, isMobile } from '../utils/constants';
 import { Link } from 'react-router-dom';
 import { DishesShimmer } from './Shimmer/Shimmer';
 // import './styles.css';
@@ -20,7 +20,7 @@ const Dishes = () => {
     }
 
 
-    const itemsToShow = 6; // Number of items to show at a time
+    const itemsToShow = isMobile ? 5 : 6; // Number of items to show at a time
     const moveForwardBy = 3; // Move forward by 3 items
 
     const showNextItems = () => {
@@ -45,7 +45,7 @@ const Dishes = () => {
                     </button>
                 </div>
             </div>
-            <div className='flex'>
+            <div className='flex mobile:w-full'>
                 {dishes.dishes.slice(startIndex, startIndex + itemsToShow).map((item, index) => (
                     <div key={index}>
                         <Link to={"/dish"} state={item} >
