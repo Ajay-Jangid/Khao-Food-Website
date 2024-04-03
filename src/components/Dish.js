@@ -6,7 +6,7 @@ import { FETCH_DISH_URL } from "../utils/constants";
 
 const Dish = () => {
     const { state } = useLocation()
-    const url = state.entityId;
+    const url = state.action.link;
     // console.log(url)
     const collectionIdMatch = url.match(/collection_id=([^&]*)/);
     const collectionId = collectionIdMatch ? collectionIdMatch[1] : null;
