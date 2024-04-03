@@ -12,7 +12,13 @@
   box-sizing: border-box;
 }
 
-html {
+@font-face {
+  font-family: ProximaNova;
+  font-weight: 400;
+  src: url("https://media-assets.swiggy.com/dls-web-assets/dls/fonts/ux3/400.woff2") format("woff2"),url("https://media-assets.swiggy.com/dls-web-assets/dls/fonts/ux3/400.woff") format("woff"),url("https://media-assets.swiggy.com/dls-web-assets/dls/fonts/ux3/400.ttf") format("truetype")
+}
+
+html {  
   font-size: 62.5%;
   scroll-behavior: smooth;
   /*Smooth scroll behaviour on scrolling */

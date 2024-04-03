@@ -13,10 +13,14 @@ const Dishes = () => {
     }, [])
 
     const fetchDishes = async () => {
-        const data = await fetch(FETCH_DISHES_URL);
-        const json = await data.json()
-        console.log(json);
-        setDishes(json);
+        try {
+            const data = await fetch(FETCH_DISHES_URL);
+            const json = await data.json()
+            console.log(json);
+            setDishes(json);
+        } catch (err) {
+            console.log(err)
+        }
     }
 
 
@@ -31,9 +35,9 @@ const Dishes = () => {
         setStartIndex(prevIndex => Math.max(prevIndex - moveForwardBy, 0));
     };
     if (dishes == null)
-        return <DishesShimmer/>
+        return <DishesShimmer />
     return (
-        <div className="container">
+        <div className="container border-b-2 border-gray-200">
             <div className="buttons flex justify-between">
                 <h1 className='font-Basis_Grotesque_Pro font-extrabold text-[24px] leading-[28px] tracking-[-0.4px] mobile:text-[18px]'>{dishes.title}</h1>
                 <div>

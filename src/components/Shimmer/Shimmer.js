@@ -19,19 +19,21 @@ export default Shimmer;
 
 export const DishShimmer = () => {
 
-    return <div className="shimmer-container w-full">
+    return <div className="shimmer-container w-8/12 mx-auto">
         <div className="dish-shimmer-menu">
             <div className="dish-shimmer1"></div>
             <div className="dish-shimmer2"></div>
         </div>
-        <div className="shimmer-card"></div>
-        <div className="shimmer-card"></div>
-        <div className="shimmer-card"></div>
-        <div className="shimmer-card"></div>
-        <div className="shimmer-card"></div>
-        <div className="shimmer-card"></div>
-        <div className="shimmer-card"></div>
-        <div className="shimmer-card"></div>
+        <div className="flex flex-wrap">
+            <div className="shimmer-card"></div>
+            <div className="shimmer-card"></div>
+            <div className="shimmer-card"></div>
+            <div className="shimmer-card"></div>
+            <div className="shimmer-card"></div>
+            <div className="shimmer-card"></div>
+            <div className="shimmer-card"></div>
+            <div className="shimmer-card"></div>
+        </div>
     </div>
 }
 

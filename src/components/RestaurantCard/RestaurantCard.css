@@ -1,18 +1,30 @@
+@font-face {
+    font-family: ProximaNovaCondensedBlack;
+    src: url("https://media-assets.swiggy.com/dls-web-assets/dls/fonts/ProximaNovaCond-Black.woff2") format("woff2"), url("https://media-assets.swiggy.com/dls-web-assets/dls/fonts/ProximaNovaCond-Black.woff") format("woff"), url("https://media-assets.swiggy.com/dls-web-assets/dls/fonts/ProximaNovaCond-Black.ttf") format("truetype");
+    font-style: normal
+}
+
 .res-card {
     width: 22rem;
-    height: 30rem;
+    height: 23rem;
     display: flex;
     flex-direction: column;
-    margin: 1rem auto;
+    margin: 0.5rem auto;
     padding: 1rem;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    align-items: center;
     transition: transform 0.5s ease;
     border-radius: 10px;
 }
 
 .card-container {
     width: 100%;
-    height: 50%;
+    height: 65%;
+}
+
+.card-info {
+    width: 100%;
+    height: 20%;
 }
 
 .res-card-image {
@@ -27,12 +39,12 @@
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.res-card:hover,
+/* .res-card:hover,
 .res-card:focus {
     cursor: pointer;
     transform: translateY(-10px);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
+} */
 
 
 .res-card-title {
@@ -41,15 +53,16 @@
     margin-top: 1rem;
 }
 
+/* 
 .res-card p {
     font-weight: 500;
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     margin-bottom: 10px;
-}
+} */
 
-.res-card p span {
+/* .res-card p span {
     margin-right: 2rem;
-}
+} */
 
 .fa-star {
     margin-right: 1rem;
@@ -64,8 +77,12 @@
 .discountLabel {
     position: absolute;
     z-index: 99;
-    top: 38%;
-    left: 15;
+    top: 52%;
+    width: 70%;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: ProximaNovaCondensedBlack;
     font-weight: 800;
     font-size: 16px;
     line-height: 22px;
@@ -81,6 +98,7 @@
 @media screen and (min-width: 200px) and (max-width: 480px) {
     .res-card {
         flex-direction: row;
+        justify-content: space-between;
         width: 100%;
         height: 13rem;
         padding: 0.5rem;
@@ -133,10 +151,11 @@
         z-index: 99;
         top: 70%;
         left: 4;
-        font-weight: 600;
-        font-size: 10px;
+        font-weight: 800;
+        transform: translateX(0);
+        font-size: 11px;
         line-height: 22px;
-        letter-spacing: -0.5px;
+        /* letter-spacing: -0.px; */
         color: black;
         background-color: #FBBF24;
         /* padding: 0 5px; */
@@ -145,12 +164,12 @@
         border-radius: 3px;
     }
 
-    .res-card:hover,
+    /* .res-card:hover,
     .res-card:focus {
         cursor: pointer;
         transform: none;
         box-shadow: none;
-    }
+    } */
 }
 
 /* For iPads and Tablets – 481px — 768px */
