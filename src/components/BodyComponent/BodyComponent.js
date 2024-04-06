@@ -1,11 +1,10 @@
 import RestaurantCard, { withHeaderLabel } from "../RestaurantCard/RestaurantCard";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
 // import "./BodyComponent.css"
 import { FETCH_MORE_RESTAURANT_LIST_URL, RESTAURANT_LIST_URL } from "../../utils/constants";
 import { FaSearch } from "react-icons/fa";
 import Shimmer from "../Shimmer/Shimmer";
-import Loading from "../Loading/Loading";
 import Dishes from "../Dishes";
 
 const BodyComponent = () => {
@@ -15,7 +14,7 @@ const BodyComponent = () => {
   const [filteredRestaurant, setfilteredRestaurant] = useState([])
   const [pageOffSet, setPageOffset] = useState(null);
   const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const observer = useRef();
 
   const DiscountLabel = withHeaderLabel(RestaurantCard);
 
@@ -23,30 +22,40 @@ const BodyComponent = () => {
     fetchData();
   }, []);
 
+  const lastItemElementRef = useCallback(node => {
+    if (observer.current) observer.current.disconnect();
+    observer.current = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) {
+        setPage(prevPage => prevPage + 1)
+      }
+    })
+    if (node) observer.current.observe(node)
+  }, [])
+
   useEffect(() => {
     if (page > 0) {
       fetchMoreData();
     }
   }, [page]);
 
-  const handleInfiniteScroll = async () => {
-    try {
-      if (
-        window.innerHeight + document.documentElement.scrollTop + 1 >=
-        document.documentElement.scrollHeight - document.getElementById('footer').clientHeight * 2
-      ) {
-        setLoading(true);
-        setPage((prev) => prev + 1);
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleInfiniteScroll = async () => {
+  //   try {
+  //     if (
+  //       window.innerHeight + document.documentElement.scrollTop + 1 >=
+  //       document.documentElement.scrollHeight - document.getElementById('footer').clientHeight * 2
+  //     ) {
+  //       setLoading(true);
+  //       setPage((prev) => prev + 1);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  useEffect(() => {
-    window.addEventListener("scroll", handleInfiniteScroll);
-    return () => window.removeEventListener("scroll", handleInfiniteScroll);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", handleInfiniteScroll);
+  //   return () => window.removeEventListener("scroll", handleInfiniteScroll);
+  // }, []);
 
   const fetchData = async () => {
     try {
@@ -144,11 +153,17 @@ const BodyComponent = () => {
       <div className="mx-auto w-full flex flex-wrap mobile:w-full mobile:flex-col">
         {
           listOfRestaurants.length > 0 ?
-            filteredRestaurant.map((restaurantObj) => (
-              <Link className="res-link" key={restaurantObj.info.id} to={"/restaurants/" + restaurantObj.info.id}>
-                <DiscountLabel resData={restaurantObj.info} />
-              </Link>
-            )) : <Shimmer />
+            filteredRestaurant.map((restaurantObj, index) => {
+              if (filteredRestaurant.length === index + 1) {
+                return <Link ref={lastItemElementRef} className="res-link" key={restaurantObj.info.id} to={"/restaurants/" + restaurantObj.info.id}>
+                  <DiscountLabel resData={restaurantObj.info} />
+                </Link>
+              } else {
+                return <Link className="res-link" key={restaurantObj.info.id} to={"/restaurants/" + restaurantObj.info.id}>
+                  <DiscountLabel resData={restaurantObj.info} />
+                </Link>
+              }
+            }) : <Shimmer />
         }
       </div>
     </div >
