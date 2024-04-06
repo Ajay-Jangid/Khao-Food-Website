@@ -20,7 +20,7 @@ const AppLayout = () => {
   return (
     <Provider store={appStore}>
       <Router>
-        <div className="app w-[100%] h-[100%]">
+        <div className="app w-[100%] min-h-[100vh] grid grid-rows-[1fr auto]">
           <Header />
           <Routes>
             <Route exact path="/" element={<BodyComponent />} />
