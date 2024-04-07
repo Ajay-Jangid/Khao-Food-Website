@@ -4,7 +4,7 @@ import nonVegLogo from "../../assets/nonVegLogo.png";
 import pureVegLogo from "../../assets/pureVegLogo.png";
 import emptyCart from "../../assets/emtyCart.png";
 import greenTick from "../../assets/greenTick.jpg";
-import empty from "../../assets/empty.png";
+import empty from "../../assets/Empty.png";
 
 export const LOGO_URL = logoImage;
 export const VEG_LOGO_URL = vegLogo;
