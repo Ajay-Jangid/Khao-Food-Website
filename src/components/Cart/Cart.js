@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { clearCart, removeItem, updateItem } from "../../utils/cartSlice";
-import { EMPTY_CART_LOGO, PAYMENT_SUCCESSFULL_LOGO } from "../../utils/constants";
+import { CON_URL, EMPTY_CART_LOGO, PAYMENT_SUCCESSFULL_LOGO } from "../../utils/constants";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -80,11 +80,28 @@ const Cart = () => {
                                 <div className="w-[20%] mobile:w-[25%] ">
                                     <h3 className="font-extralight text-2xl mobile:text-xl w-full"><i className="fa-solid fa-indian-rupee-sign mr-2" />{(+item.item.price * +item.quantity).toFixed(2)}</h3>
                                 </div>
-                                <div className="w-[15%] mobile:w-[20%] p-2 border border-green-400 flex items-center justify-between mobile:p-1">
+                                {item.item.imageUrl ?
+                                    <div className="w-[20%] border-2 h-[12rem] rounded-[1.5rem] relative mobile:w-[40%] mobile:h-[10rem] tablet:w-[30%]">
+                                        <img className="w-full h-full object-cover object-center rounded-[1.5rem] " src={item.item.imageUrl} />
+                                        <div className="w-36 h-12 text-2xl text-center rounded-xl shadow-lg flex justify-between items-center bg-white text-green-500 absolute bottom-[-15] left-[50%] translate-x-[-50%] z-10 mobile:text-[1rem] ">
+                                            <button className="w-[30%] text-center h-full hover:bg-slate-200 hover:rounded-l-lg mobile:hover:bg-none" onClick={() => handleRemoveItem(item)}>−</button>
+                                            <span className="inline-block w-[30%]">{item.quantity}</span>
+                                            <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-r-lg mobile:hover:bg-none" onClick={() => handleUpdateItem(item)}>+</button>
+                                        </div>
+                                    </div> :
+                                    <div className="w-[20%] border-2 h-[12rem] rounded-[1.5rem] relative mobile:w-[40%] mobile:h-[10rem] tablet:w-[30%]">
+                                        <div className="w-36 h-14 text-2xl text-center rounded-xl shadow-lg flex items-center justify-between bg-white text-green-500 absolute bottom-[-15] left-[50%] translate-x-[-50%] z-10 mobile:text-[1rem] ">
+                                            <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-l-lg mobile:hover:bg-none" onClick={() => handleRemoveItem(item)}>−</button>
+                                            <span className="inline-block w-[30%]">{item.quantity}</span>
+                                            <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-r-lg mobile:hover:bg-none" onClick={() => handleUpdateItem(item)}>+</button>
+                                        </div>
+                                    </div>
+                                }
+                                {/* <div className="w-[15%] mobile:w-[20%] p-2 border border-green-400 flex items-center justify-between mobile:p-1">
                                     <button className="font-bold w-8 h-8  text-green-500 text-[14px] " onClick={() => handleRemoveItem(item)}>−</button>
                                     <span className="inline-block font-bold text-center w-8  text-green-500 text-[14px] ">{item.quantity}</span>
                                     <button className="font-bold w-8 h-8  text-green-500 text-[14px] " onClick={() => handleUpdateItem(item)}>+</button>
-                                </div>
+                                </div> */}
                             </div>
                         ))
                     }

@@ -3,7 +3,7 @@ import "./RestaurantMenu.css"
 import { useParams } from "react-router-dom";
 import RecommendedCard from "../RecommendedCard/RecommendedCard";
 import { useRestaurantMenu } from "../../utils/useRestaurantMenu";
-import { PURE_VEG_LOGO_URL, isMobile } from "../../utils/constants";
+import { EMPTY, PURE_VEG_LOGO_URL, isMobile } from "../../utils/constants";
 import RestaurantCategory from "../RestaurantCategory/RestaurantCategory";
 import UserContext from "../../utils/UserContext";
 import RestaurantMenuShimmer from "../RestaurantMenuShimmer/RestaurantMenuShimmer";
@@ -27,7 +27,6 @@ const RestaurantMenu = () => {
     const isPureVeg = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[0].card.card.isPureVeg
     // let categories = isMobile ? resInfo?.cards[5]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") : resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
     let categories = resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(c => c.card?.card?.["@type"] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
-
     return (
         resInfo === null ? <RestaurantMenuShimmer /> :
             <div className="container w-6/12 mobile:w-full tablet:w-full">
@@ -78,11 +77,17 @@ const RestaurantMenu = () => {
 
                 <div className="bg-gray-50">
                     {
-                        categories.map((category, index) =>
-                            <UserContext.Provider key={index} value={{ lastMileTravelString, totalFee, resId, isVegChecked }}>
-                                <RestaurantCategory data={category.card.card} showItems={index === showIndex && true} setShowIndex={() => setShowIndex((prevIndex) => prevIndex === index ? null : index)} />
-                            </UserContext.Provider>
-                        )
+                        !categories ?
+                            <div className="flex flex-col items-center">
+                                <p className="text-3xl text-gray-500 mt-5 mobile:text-2xl">Uh Oh! No items available right now!</p>
+                                <img src={EMPTY} className="w-[80%] mt-4"></img>
+                            </div>
+                            :
+                            categories.map((category, index) =>
+                                <UserContext.Provider key={index} value={{ lastMileTravelString, totalFee, resId, isVegChecked }}>
+                                    <RestaurantCategory data={category.card.card} showItems={index === showIndex && true} setShowIndex={() => setShowIndex((prevIndex) => prevIndex === index ? null : index)} />
+                                </UserContext.Provider>
+                            )
                     }
                 </div>
             </div>

@@ -150,17 +150,17 @@ const Item = ({ item }) => {
                             item.card.info.imageId ?
                                 <div className="w-[20%] border-2 h-[12rem] rounded-[1.5rem] relative mobile:w-[40%] mobile:h-[10rem] tablet:w-[30%]">
                                     <img className="w-full h-full object-cover object-center rounded-[1.5rem] " src={CON_URL + item.card.info.imageId} />
-                                    <div className="w-36 h-12 text-center rounded-xl shadow-lg flex justify-between items-center bg-white text-green-500 absolute bottom-[-15] left-[50%] translate-x-[-50%] z-10 mobile:text-[1rem] ">
-                                        <button className="w-[30%] text-center h-full hover:bg-slate-200 hover:rounded-l-lg" onClick={() => handleRemoveItem(item)}>−</button>
+                                    <div className="w-36 h-12 text-2xl text-center rounded-xl shadow-lg flex justify-between items-center bg-white text-green-500 absolute bottom-[-15] left-[50%] translate-x-[-50%] z-10 mobile:text-[1rem] ">
+                                        <button className="w-[30%] text-center h-full hover:bg-slate-200 hover:rounded-l-lg mobile:hover:bg-none" onClick={() => handleRemoveItem(item)}>−</button>
                                         <span className="inline-block w-[30%]">{count}</span>
-                                        <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-r-lg" onClick={() => handleUpdateItem(item)}>+</button>
+                                        <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-r-lg mobile:hover:bg-none" onClick={() => handleUpdateItem(item)}>+</button>
                                     </div>
                                 </div> :
                                 <div className="w-[20%] border-2 h-[12rem] rounded-[1.5rem] relative mobile:w-[40%] mobile:h-[10rem] tablet:w-[30%]">
-                                    <div className="w-36 h-14 text-center rounded-xl shadow-lg flex items-center justify-between bg-white text-green-500 absolute bottom-[-15] left-[50%] translate-x-[-50%] z-10 mobile:text-[1rem] ">
-                                        <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-l-lg" onClick={() => handleRemoveItem(item)}>−</button>
+                                    <div className="w-36 h-14 text-2xl text-center rounded-xl shadow-lg flex items-center justify-between bg-white text-green-500 absolute bottom-[-15] left-[50%] translate-x-[-50%] z-10 mobile:text-[1rem] ">
+                                        <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-l-lg mobile:hover:bg-none" onClick={() => handleRemoveItem(item)}>−</button>
                                         <span className="inline-block w-[30%]">{count}</span>
-                                        <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-r-lg" onClick={() => handleUpdateItem(item)}>+</button>
+                                        <button className="w-[30%] h-full hover:bg-slate-200 hover:rounded-r-lg mobile:hover:bg-none" onClick={() => handleUpdateItem(item)}>+</button>
                                     </div>
                                 </div>
 
