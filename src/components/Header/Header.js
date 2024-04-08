@@ -13,7 +13,7 @@ const Header = () => {
       <div className="logo-container flex items-center">
         <Link to="/" className="text-link">
           {/* <img className="logo" src={LOGO_URL} /> */}
-          <h1 className="text-[5rem] font-extrabold ml-10">Khao</h1>
+          <h1 className="text-[5rem] font-extrabold ml-10 mobile:text-[3rem]">Khao</h1>
         </Link>
       </div>
       <div className="menu" onClick={() => { setMenuOpen(!menuOpen) }}>
