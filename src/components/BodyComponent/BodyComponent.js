@@ -102,21 +102,21 @@ const BodyComponent = () => {
   }
 
 
-  const topRatedRestaurant = () => {
-    if (!topRatedRes) {
-      let tmp = listOfRestaurants.filter((res) => {
-        return res.info.avgRating > 4.2;
-      });
+  // const topRatedRestaurant = () => {
+  //   if (!topRatedRes) {
+  //     let tmp = listOfRestaurants.filter((res) => {
+  //       return res.info.avgRating > 4.2;
+  //     });
 
-      setfilteredRestaurant(
-        tmp.sort((a, b) => b.info.avgRating - a.info.avgRating)
-      );
-      settopRatedRes(true);
-    } else {
-      setfilteredRestaurant(listOfRestaurants);
-      settopRatedRes(false);
-    }
-  }
+  //     setfilteredRestaurant(
+  //       tmp.sort((a, b) => b.info.avgRating - a.info.avgRating)
+  //     );
+  //     settopRatedRes(true);
+  //   } else {
+  //     setfilteredRestaurant(listOfRestaurants);
+  //     settopRatedRes(false);
+  //   }
+  // }
 
   const handleKeyDown = (event) => {
     if (event.key === 'Enter') {
@@ -129,28 +129,28 @@ const BodyComponent = () => {
 
     <div className="w-8/12 mx-auto mobile:w-full ">
 
-      <div className="mx-auto p-4 flex justify-between mobile:flex-col mobile:items-center">
+      <div className="mx-auto p-4 flex justify-center mobile:flex-col mobile:items-center">
 
-        <div className="flex">
+        <div className="flex w-[60%]">
           <input
             type="text"
             placeholder="Search for restaurants..."
             value={searchText} onChange={(e) => {
               setSearchText(e.target.value)
             }} onKeyDown={handleKeyDown}
-            className="py-3 px-4 border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent flex-1"
+            className="py-5 px-10 text-3xl border border-gray-300 rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent flex-1 mobile:text-sm mobile:py-3"
           />
-          <button onClick={() => displaySearchRes()} className="bg-blue-500 text-white py-2 px-4 rounded-r-md flex items-center">
+          <button onClick={() => displaySearchRes()} className=" text-3xl bg-blue-500 text-white py-2 px-4 rounded-r-md flex items-center mobile:text-lg">
             <FaSearch className="mr-2" />
             Search
           </button>
 
         </div>
-        <button className="text-lg px-4 py-2 rounded-lg bg-black text-white mobile:w-[50%] mobile:mt-2 mobile:text-center" onClick={() => topRatedRestaurant()}>Top Rated Restaurant</button>
+        {/* <button className="text-lg px-4 py-2 rounded-lg bg-black text-white mobile:w-[50%] mobile:mt-2 mobile:text-center" onClick={() => topRatedRestaurant()}>Top Rated Restaurant</button> */}
       </div>
       <Dishes></Dishes>
 
-      <div className="mx-auto w-full flex flex-wrap mobile:w-full mobile:flex-col">
+      <div className="w-full flex flex-wrap justify-between mobile:justify-normal mobile:w-full mobile:flex-col">
         {
           listOfRestaurants.length > 0 ?
             filteredRestaurant.map((restaurantObj, index) => {

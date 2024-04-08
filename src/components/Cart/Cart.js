@@ -70,6 +70,12 @@ const Cart = () => {
                         </div>
                     }
                     {
+                        Object.keys(cartItems).length !== 0 &&
+                        <div className="text-4xl text-center font-extrabold">
+                            <h1>Checkout</h1>
+                        </div>
+                    }
+                    {
                         Object.values(cartItems).map((item) => (
                             <div key={item.item.id} className="flex justify-between items-center my-4 border-dashed border-b-2 border-gray-500 py-2 ">
 
@@ -78,7 +84,7 @@ const Cart = () => {
                                     <h3 className="font-bold my-2 text-2xl  w-[90%] mobile:text-lg mobile:w-[80%]">{item.item.name}</h3>
                                 </div>
                                 <div className="w-[20%] mobile:w-[25%] ">
-                                    <h3 className="font-extralight text-2xl mobile:text-xl w-full"><i className="fa-solid fa-indian-rupee-sign mr-2" />{(+item.item.price * +item.quantity).toFixed(2)}</h3>
+                                    <h3 className="font-extralight text-2xl mobile:text-    xl w-full"><i className="fa-solid fa-indian-rupee-sign mr-2" />{(+item.item.price * +item.quantity).toFixed(2)}</h3>
                                 </div>
                                 {item.item.imageUrl ?
                                     <div className="w-[20%] border-2 h-[12rem] rounded-[1.5rem] relative mobile:w-[40%] mobile:h-[10rem] tablet:w-[30%]">
@@ -107,33 +113,33 @@ const Cart = () => {
                     }
                     {Object.keys(cartItems).length > 0 &&
                         <div>
-                            <span className="text-lg ">Bill Details</span>
+                            <span className="text-2xl font-extrabold leading-10">Bill Details</span>
                             <div className="p-2  flex justify-between">
-                                <span className="inline-block text-lg w-[80%]">• Item Total</span>
-                                <span className="inline-block text-lg w-[20%]"><i className="fa-solid fa-indian-rupee-sign mr-2" />{totalPrice}</span>
+                                <span className="inline-block text-2xl w-[70%]">• Item Total</span>
+                                <span className="inline-block text-2xl w-[30%]"><i className="fa-solid fa-indian-rupee-sign mr-2" />{totalPrice}</span>
                             </div>
                             <div className="p-2  flex justify-between">
-                                <span className="inline-block text-lg  w-[80%]">• Delivery Fee</span>
-                                <span className="inline-block text-lg  w-[20%]"><i className="fa-solid fa-indian-rupee-sign mr-2" />{deliveryCharges}</span>
+                                <span className="inline-block text-2xl  w-[70%]">• Delivery Fee</span>
+                                <span className="inline-block text-2xl  w-[30%]"><i className="fa-solid fa-indian-rupee-sign mr-2" />{deliveryCharges}</span>
                             </div>
                             <div className="p-2 flex justify-between">
-                                <span className="inline-block text-lg w-[80%]">• GST and Restaurant Charges</span>
-                                <span className="inline-block text-lg w-[20%]"><i className="fa-solid fa-indian-rupee-sign mr-2" />{gstCharges}</span>
+                                <span className="inline-block text-2xl w-[70%]">• GST and Restaurant Charges</span>
+                                <span className="inline-block text-2xl w-[30%]"><i className="fa-solid fa-indian-rupee-sign mr-2" />{gstCharges}</span>
                             </div>
                             <div className="p-2 flex justify-between">
-                                <span className="inline-block text-lg  w-[80%]">• Platform Fee</span>
-                                <span className="inline-block text-lg  w-[20%]"><i className="fa-solid fa-indian-rupee-sign mr-2" />{platformCharges}</span>
+                                <span className="inline-block text-2xl  w-[70%]">• Platform Fee</span>
+                                <span className="inline-block text-2xl  w-[30%]"><i className="fa-solid fa-indian-rupee-sign mr-2" />{platformCharges}</span>
                             </div>
                             <div className="p-2 font-extrabold flex justify-between border-t-2 border-black">
-                                <span className="inline-block text-lg w-[80%]">TO PAY</span>
-                                <span className="inline-block text-lg w-[20%]"><i className="fa-solid fa-indian-rupee-sign mr-2" />{totalToPay}</span>
+                                <span className="inline-block text-2xl w-[70%]">TO PAY</span>
+                                <span className="inline-block text-2xl w-[30%]"><i className="fa-solid fa-indian-rupee-sign mr-2" />{totalToPay}</span>
                             </div>
                         </div>
-                    }
+                    }   
                     {Object.keys(cartItems).length > 0 &&
                         <div className="text-center">
-                            <button className="p-2  m-2 bg-green-500 rounded-lg text-lg font-bold" onClick={handleProceedToPay}>Proceed to pay</button>
-                            <button className="p-2  m-2 bg-red-500 rounded-lg text-lg font-bold" onClick={handleClearCart}>Clear Cart</button>
+                            <button className="p-2  m-2 bg-green-500 rounded-lg text-2xl font-extrabold" onClick={handleProceedToPay}>Proceed to pay</button>
+                            <button className="p-2  m-2 bg-red-500 rounded-lg text-2xl font-extrabold" onClick={handleClearCart}>Clear Cart</button>
                         </div>
                     }
                 </div>
