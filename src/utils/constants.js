@@ -5,6 +5,9 @@ import pureVegLogo from "../../assets/pureVegLogo.png";
 import emptyCart from "../../assets/emtyCart.png";
 import greenTick from "../../assets/greenTick.jpg";
 import empty from "../../assets/Empty.png";
+import loginImage from "../../assets/LoginImage.jpg"
+import signUpImage from "../../assets/SignUpImage.png"
+import PageNotFound from "../../assets/PageNotFound.jpg"
 
 export const LOGO_URL = logoImage;
 export const VEG_LOGO_URL = vegLogo;
@@ -13,6 +16,9 @@ export const PURE_VEG_LOGO_URL = pureVegLogo;
 export const EMPTY_CART_LOGO = emptyCart;
 export const PAYMENT_SUCCESSFULL_LOGO = greenTick;
 export const EMPTY = empty;
+export const LOGIN_IMAGE_URL = loginImage;
+export const SIGNUP_IMAGE_URL = signUpImage;
+export const PAGE_NOT_FOUND_URL = PageNotFound;
 
 export const WEBSITE_NAME = "Khao";
 export const SLOGAN = "Bhukh lagi hai, khana khana hai! Aa jao!";

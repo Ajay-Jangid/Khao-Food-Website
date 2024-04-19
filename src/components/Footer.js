@@ -8,7 +8,7 @@ const Footer = () => {
 
     return (
         <footer id="footer" className="bg-gray-800 text-white">
-            <div className="container mx-auto px-4 my-0">
+            <div className="container mx-auto px-4">
                 {/* <div className="flex flex-wrap justify-between items-center">
                     <div className="w-full  mb-4 ">
                         <h3 className="text-3xl  font-bold mb-2">About {WEBSITE_NAME}</h3>
@@ -25,7 +25,7 @@ const Footer = () => {
                     <p className="text-2xl mobile:text-xl">&copy; {new Date().getFullYear()} {WEBSITE_NAME}. All rights reserved.</p>
                 </div>
                 <div className="">
-                    <ul className='flex justify-center text-[3rem] mobile:text-[2rem]'>
+                    <ul className='flex justify-center text-[3rem] mobile:text-[3rem]'>
                         <li><a href="https://www.instagram.com/your_instagram_username" target="_blank"><i className="fab fa-instagram px-3"></i></a></li>
                         <li><a href="https://github.com/Ajay-Jangid/Khao-Food-Website" target='_blank'><i className="fab fa-github-square px-3"></i></a></li>
                         <li><a href="https://www.facebook.com/your_facebook_page" target="_blank"><i className="fab fa-facebook-square px-3"></i></a></li>

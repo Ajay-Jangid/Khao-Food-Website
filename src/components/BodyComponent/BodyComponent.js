@@ -1,13 +1,20 @@
 import RestaurantCard, { withHeaderLabel } from "../RestaurantCard/RestaurantCard";
 import { useState, useEffect, useRef, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import "./BodyComponent.css"
 import { FETCH_MORE_RESTAURANT_LIST_URL, RESTAURANT_LIST_URL } from "../../utils/constants";
 import { FaSearch } from "react-icons/fa";
 import Shimmer from "../Shimmer/Shimmer";
 import Dishes from "../Dishes";
+import { useSelector } from "react-redux";
 
 const BodyComponent = () => {
+  const isAuthenticated = useSelector((store) => store.login.isAuthenticated)
+  const navigate = useNavigate();
+
+  if (!isAuthenticated) {
+    navigate("/login");
+  }
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [topRatedRes, settopRatedRes] = useState(false);
   const [searchText, setSearchText] = useState('');
@@ -78,8 +85,15 @@ const BodyComponent = () => {
 
   const fetchMoreData = async () => {
     try {
-      let url = FETCH_MORE_RESTAURANT_LIST_URL + "/" + pageOffSet.nextOffset + "/" + pageOffSet.widgetOffset.collectionV5RestaurantListWidget_SimRestoRelevance_food_seo;
-      const data = await fetch(url)
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(pageOffSet)
+      };
+      let url = FETCH_MORE_RESTAURANT_LIST_URL;
+      const data = await fetch(url, options)
       const json = await data.json()
       let restaurants = json.restaurants;
       restaurants = restaurants.slice(0, restaurants.length - restaurants.length % 4)
@@ -127,7 +141,7 @@ const BodyComponent = () => {
 
   return (
 
-    <div className="w-8/12 mx-auto mobile:w-full ">
+    <div className="w-[60%] mx-auto mobile:w-full">
 
       <div className="mx-auto p-4 flex justify-center mobile:flex-col mobile:items-center">
 
@@ -150,7 +164,7 @@ const BodyComponent = () => {
       </div>
       <Dishes></Dishes>
 
-      <div className="w-full flex flex-wrap justify-between mobile:justify-normal mobile:w-full mobile:flex-col">
+      <div className="w-full flex flex-wrap mobile:justify-normal mobile:w-full mobile:flex-col">
         {
           listOfRestaurants.length > 0 ?
             filteredRestaurant.map((restaurantObj, index) => {
