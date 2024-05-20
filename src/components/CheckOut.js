@@ -63,7 +63,7 @@ const CheckOut = () => {
         console.log(orderDetail)
         const id = orderId().generate()
         console.log('[ID]', id)
-        console.log(loginDetails.email)
+        console.log(loginDetails)
         let payload = {
             orderId: id,
             email: loginDetails.email,
