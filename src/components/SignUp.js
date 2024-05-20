@@ -73,7 +73,7 @@ const SignUp = () => {
 
     return (
         <section className="mobile:h-full h-[53rem]">
-            <div className="mx-auto my-[3rem] w-8/12 h-full rounded-xl flex shadow-2xl mobile:flex-col mobile:w-full mobile:p-4 mobile:h-full mobile:my-0">
+            <div className="mx-auto my-[3rem] w-8/12 h-full rounded-xl flex shadow-2xl mobile:flex-col mobile:w-full mobile:p-10 mobile:h-full mobile:my-0">
                 <section className="w-1/2 flex flex-col justify-center items-center h-full mobile:h-[30%] mobile:w-full">
                     <h1 className="text-5xl h-[10%] text-center font-bold mobile:text-4xl mobile:order-2 mobile:mt-3">Sign Up</h1>
                     <img className="w-full h-3/5 object-cover object-center bg-no-repeat mobile:h-full" src={SIGNUP_IMAGE_URL}></img>
