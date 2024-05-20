@@ -75,7 +75,7 @@ const Login = () => {
 
     return (
         <section className="h-screen mobile:h-full">
-            <div className="mx-auto relative top-[50%] translate-y-[-50%] w-8/12 h-3/4 rounded-xl flex shadow-2xl mobile:flex-col mobile:w-full mobile:p-4 mobile:h-full  mobile:my-0 tablet:w-full">
+            <div className="mx-auto relative top-[50%] translate-y-[-50%] w-8/12 h-3/4 rounded-xl flex shadow-2xl mobile:flex-col mobile:w-full mobile:p-10 mobile:h-full  mobile:my-0 tablet:w-full">
                 <section className="w-1/2 flex flex-col justify-center items-center h-full mobile:h-[30%] mobile:w-full">
                     <h1 className="text-5xl h-[10%] text-center font-bold mobile:text-4xl mobile:order-2">Sign In</h1>
                     <img className="w-full object-cover object-center bg-no-repeat h-3/4 mobile:h-full" src={LOGIN_IMAGE_URL}></img>
