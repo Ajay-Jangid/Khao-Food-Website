@@ -3,8 +3,8 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { clearCart } from "../utils/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { PAYMENT_SUCCESSFULL_LOGO } from "../utils/constants";
-import { Country, State, City } from 'country-state-city';
-import Select from 'react-select'
+// import { Country, State, City } from 'country-state-city';
+// import Select from 'react-select'
 import orderId from "order-id";
 
 const CheckOut = () => {
@@ -26,7 +26,7 @@ const CheckOut = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
-    const states = State.getStatesOfCountry('IN')
+    // const states = State.getStatesOfCountry('IN');
     const loginDetails = useSelector((store) => store.login.loginDetails)
 
     useEffect(() => {
@@ -116,7 +116,7 @@ const CheckOut = () => {
                 </div>
                 <div className="flex w-full my-4 justify-between mobile:flex-col">
                     <div className="w-[49%] mobile:w-full my-4">
-                        <Select
+                        {/* <Select
                             options={states}
                             getOptionLabel={(options) => {
                                 return options["name"];
@@ -131,11 +131,11 @@ const CheckOut = () => {
                             }}
                             placeholder="Select State"
                             className="text-xl font-black"
-                        />
-                        {/* <input className="border-2 border-gray-400 w-full p-6  mb-4 tracking-widest" type="text" required placeholder="Province" onChange={(e) => { setLastName(e.target.value) }}></input> */}
+                        /> */}
+                        <input className="border-2 border-gray-400 w-full p-6  mb-4 tracking-widest" type="text" required placeholder="Province/State" onChange={(e) => { setSelectedState(e.target.value) }}></input>
                     </div>
                     <div className="w-[49%]  mobile:w-full my-4">
-                        <Select
+                        {/* <Select
                             options={City.getCitiesOfState('IN', selectedState?.isoCode)}
                             getOptionLabel={(options) => {
                                 return options["name"];
@@ -149,8 +149,8 @@ const CheckOut = () => {
                             }}
                             placeholder="Select City"
                             className="text-xl font-black"
-                        />
-                        {/* <input className="border-2 border-gray-400 w-full p-6  mb-4 tracking-widest" type="text" required placeholder="City" onChange={(e) => { setFirstName(e.target.value) }}></input> */}
+                        /> */}
+                        <input className="border-2 border-gray-400 w-full p-6  mb-4 tracking-widest" type="text" required placeholder="City" onChange={(e) => { setSelectedCity(e.target.value) }}></input>
                     </div>
                 </div>
                 <div className="flex w-full my-4 justify-between mobile:flex-col">
