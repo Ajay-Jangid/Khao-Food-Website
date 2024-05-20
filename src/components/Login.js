@@ -3,7 +3,7 @@ import { LOGIN_IMAGE_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { updateIsAuthenticated } from "../utils/loginSlice";
+import { updateIsAuthenticated, updateLoginDetails } from "../utils/loginSlice";
 
 const Login = () => {
 
@@ -31,9 +31,10 @@ const Login = () => {
                 token
             })
         };
-        const response = await (await fetch('https://khao-backend.vercel.app/database/verify/token', options)).json();
+        const response = await (await fetch('https://proxy-server-khao.onrender.com/api/database/verify/token', options)).json();
         console.log(response)
         if (response) {
+            dispatch(updateLoginDetails({ value: response }));
             dispatch(updateIsAuthenticated({ value: true }));
             navigate('/home');
         }
@@ -52,7 +53,7 @@ const Login = () => {
                 password
             })
         };
-        let response = await fetch('https://khao-backend.vercel.app/database/login/user', options)
+        let response = await fetch('https://proxy-server-khao.onrender.com/api/database/login/user', options)
         response = await response.json();
         console.log(response)
         if (response.statusCode === '200') {
@@ -60,6 +61,7 @@ const Login = () => {
                 const { token } = response;
                 localStorage.setItem('token', token);
             }
+            dispatch(updateLoginDetails({ value: response }));
             dispatch(updateIsAuthenticated({ value: true }));
             navigate('/home')
         }

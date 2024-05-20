@@ -15,6 +15,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import PageNotFound from "./components/PageNotFound";
 import CheckOut from "./components/CheckOut";
+import ScrollToTop from "./components/ScrollToTop";
 
 //https://mui.com/material-ui/getting-started/templates/dashboard/
 
@@ -36,6 +37,7 @@ const AppLayout = () => {
     <Provider store={appStore}>
       <Router>
         <div className="app w-[100%] min-h-[100vh] grid grid-rows-[1fr auto]">
+          <ScrollToTop />
           <Routes>
             <Route exact path="/" element={<Login />} />
             <Route path="/home" element={<Layout><BodyComponent /></Layout>} />

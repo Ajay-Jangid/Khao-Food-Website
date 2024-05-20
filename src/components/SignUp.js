@@ -11,9 +11,9 @@ const SignUp = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [submit, setSubmit] = useState(true);
     const [showPassword, setShowPassword] = useState(false);
-    const [alreadyPresent, setAlreadyPresent] = useState(false);
-    const [userCreated, setUserCreated] = useState(false);
+    const [register, setRegister] = useState(false);
     const navigate = useNavigate();
+    const [count, setCount] = useState(3);
 
     const validatePassword = () => {
         const passwordRegex = /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[A-Za-z][!@#$%^&*\w]{7,}$/;
@@ -22,14 +22,16 @@ const SignUp = () => {
 
     useEffect(() => {
         let redirectTimer;
-        if (userCreated) {
-            redirectTimer = setTimeout(() => {
-                navigate("/login");
-            }, 2000);
+        if (register) {
+            redirectTimer = setInterval(() => {
+                setCount(count - 1)
+            }, 1000);
         }
+        if (count === 0)
+            navigate("/login");
         // Cleanup function to clear the timer when the component unmounts or orderPlaced changes
-        return () => clearTimeout(redirectTimer);
-    }, [userCreated]);
+        return () => clearInterval(redirectTimer);
+    }, [count, register]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -45,14 +47,12 @@ const SignUp = () => {
                 password
             })
         };
-        const response = await (await fetch('https://khao-backend.vercel.app/database/create/user', options)).json()
-        if (response.statusCode === '409') {
-            setAlreadyPresent(true)
-        }
-        if (response.statusCode === '201') {
-            setUserCreated(true)
-        }
+        let response = await fetch('https://proxy-server-khao.onrender.com/api/database/create/user', options)
+        response = await response.json();
         console.log(response)
+        if (response.statusCode === '201') {
+            setRegister(true)
+        }
     }
 
     const handleSetConfirmPassword = (e) => {
@@ -61,20 +61,19 @@ const SignUp = () => {
         setSubmit(!(validatePassword && e.target.value === password));
     }
 
-    if (userCreated) {
+    if (register) {
         return (
-            <div className="relative">
-                < div className="w-full mx-auto text-center absolute top-[50%]  translate-y-[-50%] " >
-                    <img className="ml-[50%] translate-x-[-50%] h-[300px] w-[300px]" src={PAYMENT_SUCCESSFULL_LOGO} alt="Payment Successful" />
-                    <h1 className="text-3xl font-extrabold ">User Registered Successfully</h1>
-                </div >
-            </div>
+            < div className="w-full mx-auto text-center my-8" >
+                <img className="ml-[50%] translate-x-[-50%] h-[300px] w-[300px]" src={PAYMENT_SUCCESSFULL_LOGO} alt="User Created Successful" />
+                <h1 className="text-3xl font-extrabold ">User Created Successfully !</h1>
+                <h1 className="text-3xl font-extrabold ">Redirecting to login page {count}...</h1>
+            </div >
         )
     }
 
     return (
         <section className="mobile:h-full h-[53rem]">
-            <div className="mx-auto relative top-[20%] w-8/12 h-full rounded-xl flex shadow-2xl mobile:flex-col mobile:w-full mobile:p-4 mobile:h-full mobile:my-0">
+            <div className="mx-auto my-[3rem] w-8/12 h-full rounded-xl flex shadow-2xl mobile:flex-col mobile:w-full mobile:p-4 mobile:h-full mobile:my-0">
                 <section className="w-1/2 flex flex-col justify-center items-center h-full mobile:h-[30%] mobile:w-full">
                     <h1 className="text-5xl h-[10%] text-center font-bold mobile:text-4xl mobile:order-2 mobile:mt-3">Sign Up</h1>
                     <img className="w-full h-3/5 object-cover object-center bg-no-repeat mobile:h-full" src={SIGNUP_IMAGE_URL}></img>
@@ -137,13 +136,9 @@ const SignUp = () => {
                                 <span className="font-semibold text-gray-600 tracking-wide">Show Password</span>
                             </div>
                         </div>
-                        {
-                            alreadyPresent && (<div className="text-2xl w-full flex justify-center">
-                                <h1 className="font-bold text-red-500">Account already present in database.</h1>
-                            </div>)
-                        }
                         <button type="submit" className="text-3xl w-full bg-blue-500 p-6 rounded-lg my-8 font-bold" disabled={submit}>Sign Up</button>
                     </form>
+
                     <div className="text-2xl w-full mb-5 flex justify-center mobile:mb-10">
                         <h1 className="font-bold">Already have an account? <Link className="text-orange-500" to={'/login'}>Sign In</Link></h1>
                     </div>

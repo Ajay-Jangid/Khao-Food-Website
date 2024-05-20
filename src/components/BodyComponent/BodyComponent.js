@@ -141,7 +141,7 @@ const BodyComponent = () => {
 
   return (
 
-    <div className="w-[60%] mx-auto mobile:w-full">
+    <div className="w-8/12 mx-auto mobile:w-full ">
 
       <div className="mx-auto p-4 flex justify-center mobile:flex-col mobile:items-center">
 
