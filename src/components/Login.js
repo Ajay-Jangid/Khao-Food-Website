@@ -61,9 +61,10 @@ const Login = () => {
                 const { token } = response;
                 localStorage.setItem('token', token);
             }
-            dispatch(updateLoginDetails({ value: response }));
-            dispatch(updateIsAuthenticated({ value: true }));
-            navigate('/home')
+            verfiyToken(response.token)
+            // dispatch(updateLoginDetails({ value: response }));
+            // dispatch(updateIsAuthenticated({ value: true }));
+            // navigate('/home')
         }
         else if (response.statusCode === '404' || response.statusCode === '401') {
             setInvalidCredentials(true)
