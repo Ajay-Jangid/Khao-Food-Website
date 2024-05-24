@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { clearCart } from "../utils/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { PAYMENT_SUCCESSFULL_LOGO } from "../utils/constants";
-// import { Country, State, City } from 'country-state-city';
-// import Select from 'react-select'
+import { CREATE_ORDER_URL, PAYMENT_SUCCESSFULL_LOGO } from "../utils/constants";
+//import { Country, State, City } from 'country-state-city';
+//import Select from 'react-select'
 import orderId from "order-id";
 
 const CheckOut = () => {
@@ -78,7 +78,7 @@ const CheckOut = () => {
             body: JSON.stringify(payload)
         };
 
-        let response = await fetch('https://proxy-server-khao.onrender.com/api/database/order/create', options)
+        let response = await fetch(CREATE_ORDER_URL, options)
         response = await response.json();
         console.log(response)
         dispatch(clearCart());

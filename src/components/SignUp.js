@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { PAYMENT_SUCCESSFULL_LOGO, SIGNUP_IMAGE_URL } from "../utils/constants";
+import { CREATE_USER_URL, PAYMENT_SUCCESSFULL_LOGO, SIGNUP_IMAGE_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 
 const SignUp = () => {
@@ -47,7 +47,7 @@ const SignUp = () => {
                 password
             })
         };
-        let response = await fetch('https://proxy-server-khao.onrender.com/api/database/create/user', options)
+        let response = await fetch(CREATE_USER_URL, options)
         response = await response.json();
         console.log(response)
         if (response.statusCode === '201') {

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { LOGIN_IMAGE_URL } from "../utils/constants";
+import { LOGIN_IMAGE_URL, LOGIN_USER_URL, VERIFY_TOKEN_URL } from "../utils/constants";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,7 +31,7 @@ const Login = () => {
                 token
             })
         };
-        const response = await (await fetch('https://proxy-server-khao.onrender.com/api/database/verify/token', options)).json();
+        const response = await (await fetch(VERIFY_TOKEN_URL, options)).json();
         console.log(response)
         if (response) {
             dispatch(updateLoginDetails({ value: response }));
@@ -53,7 +53,7 @@ const Login = () => {
                 password
             })
         };
-        let response = await fetch('https://proxy-server-khao.onrender.com/api/database/login/user', options)
+        let response = await fetch(LOGIN_USER_URL, options)
         response = await response.json();
         console.log(response)
         if (response.statusCode === '200') {

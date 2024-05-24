@@ -22,21 +22,25 @@ export const PAGE_NOT_FOUND_URL = PageNotFound;
 
 export const WEBSITE_NAME = "Khao";
 export const SLOGAN = "Bhukh lagi hai, khana khana hai! Aa jao!";
-
+export const BASE_URL = window.location.origin;
 export const CON_URL =
   "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
 
 // export const MENU_URL = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=";
-export const MENU_URL = "https://proxy-server-khao.onrender.com/api/data/getRestaurantMenu/";
+export const MENU_URL = `${BASE_URL}/api/data/getRestaurantMenu/`;
 // export const MOBILE_MENU_URL = "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9351929&lng=77.62448069999999&restaurantId=";
 // export const RESTAURANT_LIST_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 // export const RESTAURANT_LIST_URL = "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
-export const RESTAURANT_LIST_URL = "https://proxy-server-khao.onrender.com/api/data/getRestaurantsList"
+export const RESTAURANT_LIST_URL = `${BASE_URL}/api/data/getRestaurantsList`
 // export const MOBILE_RESTAURANT_LIST_URL = "https://www.swiggy.com/mapi/homepage/getCards?lat=12.9351929&lng=77.62448069999999"
 
-export const FETCH_MORE_RESTAURANT_LIST_URL = "https://proxy-server-khao.onrender.com/api/data/getUpdatedRestaurantsList";
-export const FETCH_DISHES_URL = "https://proxy-server-khao.onrender.com/api/data/getDishes";
-export const FETCH_DISH_URL = "https://proxy-server-khao.onrender.com/api/data/getDish";
+export const FETCH_MORE_RESTAURANT_LIST_URL = `${BASE_URL}/api/data/getUpdatedRestaurantsList`;
+export const FETCH_DISHES_URL = `${BASE_URL}/api/data/getDishes`;
+export const FETCH_DISH_URL = `${BASE_URL}/api/data/getDish`;
+export const CREATE_ORDER_URL = `${BASE_URL}/api/database/order/create`;
+export const VERIFY_TOKEN_URL = `${BASE_URL}/api/database/verify/token`;
+export const LOGIN_USER_URL = `${BASE_URL}/api/database/login/user`;
+export const CREATE_USER_URL = `${BASE_URL}/api/database/create/user`;
 
 
 
